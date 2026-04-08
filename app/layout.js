@@ -12,8 +12,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Abin KJ | Full Stack Developer Portfolio",
-  description: "Interactive 3D portfolio of Abin KJ, a Full Stack Developer specializing in Javascript, React, Next.js, and more.",
+  title: "Abin KJ | Senior Full Stack Engineer",
+  description: "Interactive 3D portfolio of Abin KJ, a Senior Full Stack Engineer specializing in React, Next.js, and high-performance digital ecosystems.",
+  openGraph: {
+    title: "Abin KJ | Senior Full Stack Engineer",
+    description: "Engineering Digital Excellence with React, Next.js, and Immersive 3D Experiences.",
+    url: "https://abinkj.vercel.app",
+    siteName: "Abin KJ Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Abin KJ | Full Stack Digital Engineer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Abin KJ | Senior Full Stack Engineer",
+    description: "Engineering Digital Excellence with React, Next.js, and Immersive 3D Experiences.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -12,12 +12,22 @@ export default function About() {
   });
 
   // Subtle Scroll Parallax for "Another Effect"
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const x = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+  const bgX = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section id="about" ref={targetRef} className="py-32 px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center gap-16">
+    <section id="about" ref={targetRef} className="py-32 px-6 overflow-hidden relative">
+      {/* Background Decorative Layer */}
+      <motion.div
+        style={{ x: bgX, opacity: 0.05 }}
+        className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none select-none"
+      >
+        <span className="text-[40vw] font-black text-zinc-900 leading-none">ABOUT</span>
+      </motion.div>
+
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center gap-16 relative z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -33,7 +43,7 @@ export default function About() {
           
           {/* The "Curved UI" Image Presentation with Blob & Overflow */}
           <motion.div 
-            style={{ y }}
+            style={{ y, x }}
             className="relative w-full h-full flex items-center justify-center p-8"
           >
             {/* Animated Mesh Gradient Blob (Background) */}
@@ -89,6 +99,22 @@ export default function About() {
             My expertise spans across the entire stack, from building responsive frontends with React and Next.js, 
             to architecting backend systems with MongoDB, SQL, and various cloud platforms.
           </p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="pt-4"
+          >
+            <a
+              href="/abinkj.pdf"
+              target="_blank"
+              className="px-10 py-5 bg-zinc-900 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-zinc-800 hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl flex items-center justify-center sm:inline-flex gap-3"
+            >
+              Download Resume
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </section>

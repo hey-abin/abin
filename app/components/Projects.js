@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
 import { ExternalLink, Code2, Globe, Rocket, Github as GithubIcon } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
@@ -44,6 +44,14 @@ const projects = [
 ];
 
 function ProjectCard({ project, index }) {
+  const cardRef = useRef(null);
+  const { scrollYProgress: cardScroll } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"],
+  });
+
+  const imgY = useTransform(cardScroll, [0, 1], ["-15%", "15%"]);
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -72,6 +80,7 @@ function ProjectCard({ project, index }) {
 
   return (
     <motion.div
+      ref={cardRef}
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -89,15 +98,20 @@ function ProjectCard({ project, index }) {
         style={{ transform: "translateZ(50px)" }}
         className="h-full rounded-[40px] border border-white/20 shadow-2xl overflow-hidden glass relative flex flex-col justify-end"
       >
-        {/* Project Preview Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
-            priority
-          />
+        {/* Project Preview Image (Parallax Window) */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <motion.div 
+            style={{ y: imgY }}
+            className="absolute inset-x-0 inset-y-[-20%] w-full h-[140%]"
+          >
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              priority
+            />
+          </motion.div>
           {/* Subtle Overlay Gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
         </div>
@@ -120,7 +134,7 @@ function ProjectCard({ project, index }) {
             <p className="text-zinc-300 text-sm font-medium leading-relaxed line-clamp-2">
               {project.description}
             </p>
-
+ 
             <div className="flex flex-wrap gap-2 pt-2">
               {project.tech.map((t) => (
                 <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs font-bold text-zinc-300 uppercase tracking-widest">

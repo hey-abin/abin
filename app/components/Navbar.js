@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Mail } from "lucide-react";
 
 // Custom SVGs for missing brand icons
@@ -106,31 +106,44 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden mt-4 glass rounded-3xl p-6 shadow-2xl"
-        >
-          <div className="flex flex-col gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-lg font-medium text-zinc-900"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-            <div className="flex gap-4 pt-4 border-t border-zinc-100">
-              <GithubIcon size={20} className="text-zinc-600" />
-              <LinkedinIcon size={20} className="text-zinc-600" />
-              <Mail size={20} className="text-zinc-600" />
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="md:hidden mt-4 glass rounded-[2rem] p-6 shadow-2xl border border-white/20 relative z-50 overflow-hidden"
+          >
+            <div className="flex flex-col gap-6 relative z-10">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-lg font-medium text-zinc-900"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ))}
+              <div className="flex flex-col gap-4 pt-4 border-t border-zinc-100">
+                <a
+                  href="/abinkj.pdf"
+                  target="_blank"
+                  className="w-full py-4 glass text-zinc-900 rounded-xl font-black uppercase tracking-widest flex items-center justify-center gap-2 border border-zinc-200 shadow-sm active:scale-95 transition-all"
+                >
+                  Download Resume
+                </a>
+                <div className="flex justify-center gap-8 pt-4">
+                  <a href="https://github.com/hey-abin" target="_blank" rel="noopener noreferrer" className="p-2 text-zinc-400 hover:text-zinc-900"><GithubIcon size={24} /></a>
+                  <a href="https://www.linkedin.com/in/abinkj2005" target="_blank" rel="noopener noreferrer" className="p-2 text-zinc-400 hover:text-zinc-900"><LinkedinIcon size={24} /></a>
+                  <a href="mailto:abinkich132@gmail.com" className="p-2 text-zinc-400 hover:text-zinc-900"><Mail size={24} /></a>
+                </div>
+              </div>
             </div>
-          </div>
-        </motion.div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

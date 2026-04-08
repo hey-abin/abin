@@ -12,8 +12,9 @@ function FloatingShape({ position, color, type = "sphere", size = 1, scrollProgr
   const [clicked, setClicked] = useState(false);
 
   // Map scroll progress to subtle transformations
-  const rotationOffset = useTransform(scrollProgress, [0, 1], [0, Math.PI * 2]);
-  const yOffset = useTransform(scrollProgress, [0, 1], [0, 5]);
+  const rotationOffset = useTransform(scrollProgress, [0, 1], [0, Math.PI * 4]);
+  const yOffset = useTransform(scrollProgress, [0, 1], [0, 15]);
+  const xOffset = useTransform(scrollProgress, [0, 1], [0, -5]);
 
   useFrame((state) => {
     if (meshRef.current) {
@@ -22,11 +23,14 @@ function FloatingShape({ position, color, type = "sphere", size = 1, scrollProgr
       meshRef.current.rotation.z += 0.005;
       
       // Target position based on mouse (parallax) + Scroll position
-      const targetPulseX = position[0] + (state.pointer.x * 2);
+      const targetPulseX = position[0] + (state.pointer.x * 2) + xOffset.get();
       const targetPulseY = position[1] + (state.pointer.y * 2) + yOffset.get();
       
       meshRef.current.position.x = THREE.MathUtils.lerp(meshRef.current.position.x, targetPulseX, 0.05);
       meshRef.current.position.y = THREE.MathUtils.lerp(meshRef.current.position.y, targetPulseY, 0.05);
+
+      // Apply scroll rotation too
+      meshRef.current.rotation.y += rotationOffset.get() * 0.001;
 
       // Subtle tilt towards mouse
       meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, state.pointer.x * 0.5, 0.1);
