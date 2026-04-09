@@ -4,6 +4,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, MeshWobbleMaterial, Sphere, Torus, Octahedron, Dodecahedron, PerspectiveCamera } from "@react-three/drei";
 import { useMemo, useRef, useState, useEffect } from "react";
 import { useScroll, useTransform } from "framer-motion";
+import { useTheme } from "next-themes";
 import * as THREE from "three";
 
 function FloatingShape({ position, color, type = "sphere", size = 1, scrollProgress }) {
@@ -92,10 +93,6 @@ function FloatingShape({ position, color, type = "sphere", size = 1, scrollProgr
 function Scene({ scrollProgress }) {
   return (
     <>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[10, 10, 5]} intensity={1.5} />
-      <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
-      
       <FloatingShape position={[-4, 3, -5]} color="#8b5cf6" size={1.2} scrollProgress={scrollProgress} type="octahedron" />
       <FloatingShape position={[5, -2, -4]} color="#a78bfa" type="torus" size={1.1} scrollProgress={scrollProgress} />
       <FloatingShape position={[-6, -4, -6]} color="#c4b5fd" type="dodecahedron" size={0.7} scrollProgress={scrollProgress} />
@@ -108,19 +105,26 @@ function Scene({ scrollProgress }) {
 export default function Scene3D() {
   const { scrollYProgress } = useScroll();
   const [eventSource, setEventSource] = useState(undefined);
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   useEffect(() => {
     setEventSource(document.body);
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 pointer-events-none opacity-50">
+    <div className="fixed inset-0 z-5 pointer-events-none transition-opacity duration-1000 opacity-60 dark:opacity-80">
       <Canvas 
         shadows 
         eventSource={eventSource} 
         eventPrefix="client"
+        camera={{ position: [0, 0, 15], fov: 45 }}
+        gl={{ antialias: true, alpha: true }}
       >
         <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={50} />
+        <ambientLight intensity={isDark ? 0.3 : 0.8} />
+        <directionalLight position={[10, 10, 5]} intensity={isDark ? 3 : 1.5} color={isDark ? "#8b5cf6" : "#ffffff"} />
+        <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={isDark ? 4 : 2} color={isDark ? "#6366f1" : "#ffffff"} />
         <Scene scrollProgress={scrollYProgress} />
       </Canvas>
     </div>

@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import { Analytics } from "@vercel/analytics/next"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -38,14 +38,22 @@ export const metadata = {
   },
 };
 
+import { ThemeProvider } from "./components/ThemeProvider";
+import Scene3D from "./components/Scene3D";
+
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-white overflow-x-hidden">
-        {children}
+      <body className="min-h-full flex flex-col bg-white dark:bg-zinc-950 transition-colors duration-500 overflow-x-hidden">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
+          <Scene3D />
+          {children}
+        </ThemeProvider>
+        <Analytics/>
       </body>
     </html>
   );

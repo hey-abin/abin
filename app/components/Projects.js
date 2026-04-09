@@ -176,7 +176,7 @@ export default function Projects() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-black text-zinc-900 leading-[0.9] tracking-tighter"
+              className="text-4xl md:text-6xl font-black text-zinc-900 dark:text-white leading-[0.9] tracking-tighter"
             >
               Proven <br className="hidden md:block" /><span className="text-gradient">Portfolio</span>
             </motion.h2>
@@ -186,7 +186,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-zinc-500 font-medium max-w-sm text-base text-center md:text-left"
+            className="text-zinc-500 dark:text-zinc-400 font-medium max-w-sm text-base text-center md:text-left"
           >
             Engineering scalable systems and delightful interfaces for world-class digital applications.
           </motion.p>

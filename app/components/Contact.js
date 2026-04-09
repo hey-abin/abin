@@ -22,22 +22,22 @@ const LinkedinIcon = ({ size }) => (
 export default function Contact() {
   return (
     <footer id="contact" className="py-20 px-6">
-      <div className="max-w-7xl mx-auto glass p-8 md:p-16 rounded-[3rem] border border-zinc-100 shadow-2xl relative overflow-hidden bg-white/40 backdrop-blur-3xl">
+      <div className="max-w-7xl mx-auto glass p-8 md:p-16 rounded-[3rem] border border-zinc-100 dark:border-white/10 shadow-2xl relative overflow-hidden bg-white/40 dark:bg-zinc-950/40 backdrop-blur-3xl transition-colors duration-500">
         {/* Animated Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-purple-100/30 via-transparent to-indigo-100/30 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-purple-100/30 dark:from-purple-900/10 via-transparent to-indigo-100/30 dark:to-indigo-900/10 pointer-events-none" />
         
         <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="space-y-10 text-center lg:text-left">
+          <div className="space-y-12 text-center lg:text-left flex flex-col items-center lg:items-start">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="space-y-4"
+              className="space-y-6 w-full"
             >
-              <h2 className="text-4xl md:text-6xl font-black text-zinc-900 tracking-tighter leading-[0.9]">
+              <h2 className="text-4xl md:text-7xl font-black text-zinc-900 dark:text-white tracking-tighter leading-[0.9]">
                 Let's <span className="text-gradient">Work</span> Together.
               </h2>
-              <p className="text-lg text-zinc-500 font-medium max-w-md mx-auto lg:mx-0">
+              <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-medium max-w-md mx-auto lg:mx-0">
                 Got a project in mind? Let's connect and build something 
                 extraordinary.
               </p>
@@ -48,33 +48,33 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="flex flex-col items-center lg:items-start gap-6"
+              className="flex flex-col items-center lg:items-start gap-8 w-full"
             >
-              <div className="flex flex-col sm:flex-row items-center gap-3 text-lg font-bold text-zinc-900 group">
-                <div className="p-3 bg-white rounded-2xl shadow-sm border border-zinc-100 group-hover:scale-110 transition-transform duration-500">
-                  <Mail size={24} className="text-purple-600" />
+              <div className="flex flex-col items-center lg:items-start gap-4 text-lg font-bold text-zinc-900 dark:text-white group">
+                <div className="p-4 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm border border-zinc-100 dark:border-white/10 group-hover:scale-110 transition-transform duration-500">
+                  <Mail size={28} className="text-purple-600 dark:text-purple-400" />
                 </div>
-                <a href="mailto:abinkich132@gmail.com" className="text-zinc-600 hover:text-purple-600 transition-colors tracking-tight">
+                <a href="mailto:abinkich132@gmail.com" className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors tracking-tight">
                   abinkich132@gmail.com
                 </a>
               </div>
 
-              <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+              <div className="flex flex-wrap justify-center lg:justify-start gap-4 w-full">
                 <a 
                   href="https://github.com/hey-abin" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="px-6 py-4 bg-white rounded-xl shadow-sm border border-zinc-100 hover:bg-zinc-50 hover:scale-105 transition-all font-black text-zinc-900 flex items-center gap-2.5 uppercase tracking-widest text-[9px]"
+                  className="px-8 py-4 bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-zinc-100 dark:border-white/10 hover:bg-zinc-50 dark:hover:bg-zinc-700 hover:scale-105 transition-all font-black text-zinc-900 dark:text-white flex items-center gap-3 uppercase tracking-widest text-[10px]"
                 >
-                  <GithubIcon size={16} /> GitHub
+                  <GithubIcon size={18} /> GitHub
                 </a>
                 <a 
                   href="https://www.linkedin.com/in/abinkj2005" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="px-6 py-4 bg-white rounded-xl shadow-sm border border-zinc-100 hover:bg-zinc-50 hover:scale-105 transition-all font-black text-zinc-900 flex items-center gap-2.5 uppercase tracking-widest text-[9px]"
+                  className="px-8 py-4 bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-zinc-100 dark:border-white/10 hover:bg-zinc-50 dark:hover:bg-zinc-700 hover:scale-105 transition-all font-black text-zinc-900 dark:text-white flex items-center gap-3 uppercase tracking-widest text-[10px]"
                 >
-                  <LinkedinIcon size={16} /> LinkedIn
+                  <LinkedinIcon size={18} /> LinkedIn
                 </a>
               </div>
             </motion.div>
@@ -85,7 +85,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="glass-dark p-6 md:p-10 rounded-[2.5rem] border border-white/10 space-y-8 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] bg-zinc-900"
+            className="glass-dark p-6 md:p-10 rounded-[2.5rem] border border-white/10 space-y-8 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] bg-zinc-900 dark:bg-black/40"
           >
             <div className="space-y-1 text-center sm:text-left">
               <h3 className="text-2xl font-black text-white tracking-tight uppercase">Send a Message</h3>
@@ -136,11 +136,11 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        <div className="mt-32 pt-12 border-t border-zinc-100/50 flex flex-col md:flex-row justify-between items-center gap-6 text-zinc-400 font-black text-[10px] tracking-[0.2em] uppercase">
+        <div className="mt-16 pt-10 border-t border-zinc-100/50 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-zinc-400 dark:text-zinc-500 font-black text-[10px] tracking-[0.2em] uppercase">
           <p>© 2026 ABIN KJ. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-10">
-            <a href="#" className="hover:text-purple-600 transition-colors">PRIVACY</a>
-            <a href="#" className="hover:text-purple-600 transition-colors">TERMS</a>
+            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">PRIVACY</a>
+            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">TERMS</a>
           </div>
         </div>
       </div>

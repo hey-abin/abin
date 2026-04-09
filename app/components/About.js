@@ -75,27 +75,27 @@ export default function About() {
           className="w-full md:w-1/2 space-y-8"
         >
           <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl font-black text-zinc-900 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-black text-zinc-900 dark:text-white leading-tight">
               I Build <span className="text-gradient">Premium Digital Products</span>
             </h2>
-            <p className="text-xl text-zinc-600 leading-relaxed font-medium">
+            <p className="text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium">
               Hello! I'm Abin KJ, a passionate Full Stack Developer with a deep eye for detail and design.
               I specialize in creating interactive, 3D, and high-performance web applications that provide a seamless user experience.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="p-8 glass rounded-3xl border border-zinc-100 shadow-sm hover:shadow-md transition-shadow duration-500">
-              <span className="text-4xl font-black text-purple-600">32+</span>
-              <p className="text-zinc-500 font-bold mt-1 uppercase tracking-wider text-xs">Projects Completed</p>
+            <div className="p-8 glass rounded-3xl border border-zinc-100 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow duration-500">
+              <span className="text-4xl font-black text-purple-600 dark:text-purple-400">32+</span>
+              <p className="text-zinc-500 dark:text-zinc-400 font-bold mt-1 uppercase tracking-wider text-xs">Projects Completed</p>
             </div>
-            <div className="p-8 glass rounded-3xl border border-zinc-100 shadow-sm hover:shadow-md transition-shadow duration-500">
-              <span className="text-4xl font-black text-indigo-600">4+</span>
-              <p className="text-zinc-500 font-bold mt-1 uppercase tracking-wider text-xs">Years Experience</p>
+            <div className="p-8 glass rounded-3xl border border-zinc-100 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow duration-500">
+              <span className="text-4xl font-black text-indigo-600 dark:text-indigo-400">4+</span>
+              <p className="text-zinc-500 dark:text-zinc-400 font-bold mt-1 uppercase tracking-wider text-xs">Years Experience</p>
             </div>
           </div>
 
-          <p className="text-zinc-600 leading-relaxed text-lg">
+          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg">
             My expertise spans across the entire stack, from building responsive frontends with React and Next.js, 
             to architecting backend systems with MongoDB, SQL, and various cloud platforms.
           </p>
@@ -110,7 +110,7 @@ export default function About() {
             <a
               href="/abinkj.pdf"
               target="_blank"
-              className="px-10 py-5 bg-zinc-900 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-zinc-800 hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl flex items-center justify-center sm:inline-flex gap-3"
+              className="px-10 py-5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-zinc-800 dark:hover:bg-zinc-200 hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl flex items-center justify-center sm:inline-flex gap-3"
             >
               Download Resume
             </a>

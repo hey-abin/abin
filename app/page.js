@@ -1,4 +1,3 @@
-import Scene3D from "./components/Scene3D";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -8,8 +7,7 @@ import Contact from "./components/Contact";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen">
-      <Scene3D />
+    <main className="relative min-h-screen bg-transparent">
       <Navbar />
       
       <div className="relative z-10">

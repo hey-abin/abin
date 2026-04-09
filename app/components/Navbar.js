@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Mail } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 // Custom SVGs for missing brand icons
 const GithubIcon = ({ size }) => (
@@ -54,7 +55,7 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-2xl font-black text-zinc-900 tracking-tighter"
+          className="text-2xl font-black text-zinc-900 dark:text-white tracking-tighter"
         >
           ABIN<span className="text-purple-600">KJ.</span>
         </motion.div>
@@ -68,7 +69,7 @@ export default function Navbar() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="text-sm font-black text-zinc-500 hover:text-purple-600 transition-all uppercase tracking-widest"
+              className="text-sm font-black text-zinc-500 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all uppercase tracking-widest"
             >
               {link.name}
             </motion.a>
@@ -77,31 +78,37 @@ export default function Navbar() {
 
         {/* Final CTA Area */}
         <div className="flex items-center gap-4">
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="hidden sm:flex gap-4">
-            <a href="https://github.com/hey-abin" target="_blank" rel="noopener noreferrer" className="p-2.5 text-zinc-400 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-all">
-              <GithubIcon size={20} />
-            </a>
-            <a href="https://www.linkedin.com/in/abinkj2005" target="_blank" rel="noopener noreferrer" className="p-2.5 text-zinc-400 hover:text-zinc-900 hover:bg-zinc-50 rounded-full transition-all">
-              <LinkedinIcon size={20} />
-            </a>
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="hidden sm:flex items-center gap-6">
+            <ThemeToggle />
+            <div className="flex gap-4">
+              <a href="https://github.com/hey-abin" target="_blank" rel="noopener noreferrer" className="p-2.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-white rounded-full transition-all">
+                <GithubIcon size={20} />
+              </a>
+              <a href="https://www.linkedin.com/in/abinkj2005" target="_blank" rel="noopener noreferrer" className="p-2.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-white rounded-full transition-all">
+                <LinkedinIcon size={20} />
+              </a>
+            </div>
           </motion.div>
 
           {/* Hire Me CTA */}
           <a
             href="/abinkj.pdf"
             target="_blank"
-            className="hidden md:flex px-12 py-5 glass text-zinc-900 rounded-2xl font-black uppercase tracking-widest hover:bg-zinc-50/50 hover:scale-105 active:scale-95 transition-all duration-300 border border-zinc-200"
+            className="hidden md:flex px-12 py-5 glass text-zinc-900 dark:text-white rounded-2xl font-black uppercase tracking-widest hover:bg-zinc-50/50 dark:hover:bg-white/5 hover:scale-105 active:scale-95 transition-all duration-300 border border-zinc-200 dark:border-white/10"
           >
             Resume
           </a>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-zinc-900"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          <div className="md:hidden flex items-center gap-4">
+            <ThemeToggle />
+            <button
+              className="p-2 text-zinc-900 dark:text-white"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -116,28 +123,30 @@ export default function Navbar() {
             className="md:hidden mt-4 glass rounded-[2rem] p-6 shadow-2xl border border-white/20 relative z-50 overflow-hidden"
           >
             <div className="flex flex-col gap-6 relative z-10">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-lg font-medium text-zinc-900"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <div className="flex flex-col gap-4 pt-4 border-t border-zinc-100">
+              <div className="flex flex-col gap-4">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-xl font-bold text-zinc-900 dark:text-white"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
+              <div className="flex flex-col gap-4 pt-4 border-t border-zinc-100 dark:border-white/10">
                 <a
                   href="/abinkj.pdf"
                   target="_blank"
-                  className="w-full py-4 glass text-zinc-900 rounded-xl font-black uppercase tracking-widest flex items-center justify-center gap-2 border border-zinc-200 shadow-sm active:scale-95 transition-all"
+                  className="w-full py-4 glass text-zinc-900 dark:text-white rounded-xl font-black uppercase tracking-widest flex items-center justify-center gap-2 border border-zinc-200 dark:border-white/10 shadow-sm active:scale-95 transition-all"
                 >
                   Download Resume
                 </a>
-                <div className="flex justify-center gap-8 pt-4">
-                  <a href="https://github.com/hey-abin" target="_blank" rel="noopener noreferrer" className="p-2 text-zinc-400 hover:text-zinc-900"><GithubIcon size={24} /></a>
-                  <a href="https://www.linkedin.com/in/abinkj2005" target="_blank" rel="noopener noreferrer" className="p-2 text-zinc-400 hover:text-zinc-900"><LinkedinIcon size={24} /></a>
-                  <a href="mailto:abinkich132@gmail.com" className="p-2 text-zinc-400 hover:text-zinc-900"><Mail size={24} /></a>
+                <div className="flex justify-center gap-10 pt-4">
+                  <a href="https://github.com/hey-abin" target="_blank" rel="noopener noreferrer" className="p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white"><GithubIcon size={28} /></a>
+                  <a href="https://www.linkedin.com/in/abinkj2005" target="_blank" rel="noopener noreferrer" className="p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white"><LinkedinIcon size={28} /></a>
+                  <a href="mailto:abinkich132@gmail.com" className="p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white"><Mail size={28} /></a>
                 </div>
               </div>
             </div>

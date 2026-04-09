@@ -74,21 +74,21 @@ function SkillCard({ skill, index, scrollYProgress }) {
     >
       <div 
         style={{ transform: "translateZ(30px)" }}
-        className="p-6 md:p-10 glass rounded-[32px] border border-white/40 shadow-[0_15px_35px_-15px_rgba(0,0,0,0.1)] transition-all duration-700 group-hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.15)] group-hover:border-purple-200/50 h-full flex flex-col gap-6 bg-white/40 backdrop-blur-2xl"
+        className="p-6 md:p-10 glass rounded-[32px] border border-white/40 dark:border-white/10 shadow-[0_15px_35px_-15px_rgba(0,0,0,0.1)] transition-all duration-700 group-hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.15)] group-hover:border-purple-200/50 dark:group-hover:border-purple-500/30 h-full flex flex-col gap-6"
       >
         <div className={`w-12 h-12 md:w-16 md:h-16 rounded-[20px] md:rounded-[24px] bg-gradient-to-br ${skill.color} p-3 md:p-4 text-white shadow-md flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-[10deg]`}>
           <skill.icon className="w-6 h-6 md:w-8 md:h-8" />
         </div>
         
         <div className="space-y-4 md:space-y-6">
-          <h3 className="text-xl md:text-2xl font-black text-zinc-900 group-hover:text-purple-600 transition-colors uppercase tracking-tighter">
+          <h3 className="text-xl md:text-2xl font-black text-zinc-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors uppercase tracking-tighter">
             {skill.name}
           </h3>
           <div className="flex flex-wrap gap-2 md:gap-2.5">
             {skill.items.map((item) => (
               <span 
                 key={item} 
-                className="px-3 py-1.5 md:px-4 md:py-2 bg-white/50 border border-zinc-100 rounded-xl md:rounded-2xl text-[10px] md:text-[11px] font-black uppercase tracking-widest text-zinc-400 group-hover:text-zinc-800 group-hover:border-purple-100 group-hover:bg-purple-50/50 transition-all duration-300 cursor-default"
+                className="px-3 py-1.5 md:px-4 md:py-2 bg-zinc-100/50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl md:rounded-2xl text-[10px] md:text-[11px] font-black uppercase tracking-widest text-zinc-500 dark:text-white group-hover:text-zinc-900 dark:group-hover:text-white group-hover:border-purple-200 dark:group-hover:border-purple-500/50 group-hover:bg-purple-50/50 dark:group-hover:bg-purple-900/20 transition-all duration-300 cursor-default"
               >
                 {item}
               </span>
@@ -135,7 +135,7 @@ export default function Skills() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-8xl font-black text-zinc-900 tracking-tighter leading-[0.9]"
+            className="text-4xl md:text-8xl font-black text-zinc-900 dark:text-white tracking-tighter leading-[0.9]"
           >
             Technical <br className="md:hidden" /><span className="text-gradient">Arsenal</span>
           </motion.h2>
@@ -144,9 +144,9 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-zinc-500 font-medium max-w-2xl mx-auto text-base md:text-xl leading-relaxed"
+            className="text-zinc-500 dark:text-zinc-400 font-medium max-w-2xl mx-auto text-base md:text-xl leading-relaxed"
           >
-            Expertise across the entire digital ecosystem, from pixel-perfect frontends to robust cloud architectures.
+            Engineering scalable systems across the digital ecosystem, from pixel-perfect frontends to robust cloud architectures.
           </motion.p>
         </div>
 
