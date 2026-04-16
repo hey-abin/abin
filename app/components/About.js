@@ -108,7 +108,7 @@ export default function About() {
             className="pt-4"
           >
             <a
-              href="/abinkj.pdf"
+              href="/AbinkjResume.pdf"
               target="_blank"
               className="px-10 py-5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-zinc-800 dark:hover:bg-zinc-200 hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl flex items-center justify-center sm:inline-flex gap-3"
             >

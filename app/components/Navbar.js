@@ -92,7 +92,7 @@ export default function Navbar() {
 
           {/* Hire Me CTA */}
           <a
-            href="/abinkj.pdf"
+            href="/AbinkjResume.pdf"
             target="_blank"
             className="hidden md:flex px-12 py-5 glass text-zinc-900 dark:text-white rounded-2xl font-black uppercase tracking-widest hover:bg-zinc-50/50 dark:hover:bg-white/5 hover:scale-105 active:scale-95 transition-all duration-300 border border-zinc-200 dark:border-white/10"
           >
@@ -137,7 +137,7 @@ export default function Navbar() {
               </div>
               <div className="flex flex-col gap-4 pt-4 border-t border-zinc-100 dark:border-white/10">
                 <a
-                  href="/abinkj.pdf"
+                  href="/AbinkjResume.pdf"
                   target="_blank"
                   className="w-full py-4 glass text-zinc-900 dark:text-white rounded-xl font-black uppercase tracking-widest flex items-center justify-center gap-2 border border-zinc-200 dark:border-white/10 shadow-sm active:scale-95 transition-all"
                 >

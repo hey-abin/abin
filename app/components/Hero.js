@@ -95,7 +95,7 @@ export default function Hero() {
             Explore Projects
           </a>
           <a
-            href="/abinkj.pdf"
+            href="/AbinkjResume.pdf"
             target="_blank"
             className="w-full sm:w-auto px-10 py-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white rounded-[2rem] font-black uppercase tracking-widest text-xs hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 shadow-sm"
           >
