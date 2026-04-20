@@ -1,4 +1,4 @@
-# <p align="center">✨ ABIN KJ — Full Stack Digital Engineer ✨</p>
+# <p align="center">✨ ABIN KJ — Full Stack Developer ✨</p>
 
 <p align="center">
   <img src="public/og-image.png" alt="Abin KJ Banner" width="800px" style="border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">

@@ -12,10 +12,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Abin KJ | Senior Full Stack Engineer",
-  description: "Interactive 3D portfolio of Abin KJ, a Senior Full Stack Engineer specializing in React, Next.js, and high-performance digital ecosystems.",
+  title: "Abin KJ | Full Stack Developer",
+  description: "Interactive 3D portfolio of Abin KJ, a Full Stack Developer specializing in React, Next.js, and high-performance digital ecosystems.",
   openGraph: {
-    title: "Abin KJ | Senior Full Stack Engineer",
+    title: "Abin KJ | Full Stack Developer",
     description: "Engineering Digital Excellence with React, Next.js, and Immersive 3D Experiences.",
     url: "https://abinkj.vercel.app",
     siteName: "Abin KJ Portfolio",
@@ -24,7 +24,7 @@ export const metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Abin KJ | Full Stack Digital Engineer",
+        alt: "Abin KJ | Full Stack Developer",
       },
     ],
     locale: "en_US",
@@ -32,7 +32,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abin KJ | Senior Full Stack Engineer",
+    title: "Abin KJ | Full Stack Developer",
     description: "Engineering Digital Excellence with React, Next.js, and Immersive 3D Experiences.",
     images: ["/og-image.png"],
   },

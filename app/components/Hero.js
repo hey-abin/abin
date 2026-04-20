@@ -78,7 +78,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="max-w-xl mx-auto text-lg md:text-2xl text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed px-4"
           >
-            Senior Full Stack Engineer specializing in architecting <span className="text-zinc-900 dark:text-white font-bold">high-performance</span> ecosystems with React, Next.js, and robust cloud infrastructures.
+            Full Stack Developer specializing in architecting <span className="text-zinc-900 dark:text-white font-bold">high-performance</span> ecosystems with React, Next.js, and robust cloud infrastructures.
           </motion.p>
         </div>
 
