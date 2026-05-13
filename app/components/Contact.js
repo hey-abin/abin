@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion";
-import { Mail, MessageSquare, Send } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 
 // Custom SVGs for missing brand icons
 const GithubIcon = ({ size }) => (
@@ -19,7 +19,7 @@ const LinkedinIcon = ({ size }) => (
   </svg>
 );
 
-export default function Contact() {
+export default function Contact({ profile }) {
   return (
     <footer id="contact" className="py-20 px-6">
       <div className="max-w-7xl mx-auto glass p-8 md:p-16 rounded-[3rem] border border-zinc-100 dark:border-white/10 shadow-2xl relative overflow-hidden bg-white/40 dark:bg-zinc-950/40 backdrop-blur-3xl transition-colors duration-500">
@@ -35,10 +35,10 @@ export default function Contact() {
               className="space-y-6 w-full"
             >
               <h2 className="text-4xl md:text-7xl font-black text-zinc-900 dark:text-white tracking-tighter leading-[0.9]">
-                Let's <span className="text-gradient">Work</span> Together.
+                Let&apos;s <span className="text-gradient">Work</span> Together.
               </h2>
               <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-medium max-w-md mx-auto lg:mx-0">
-                Got a project in mind? Let's connect and build something 
+                Got a project in mind? Let&apos;s connect and build something 
                 extraordinary.
               </p>
             </motion.div>
@@ -54,14 +54,14 @@ export default function Contact() {
                 <div className="p-4 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm border border-zinc-100 dark:border-white/10 group-hover:scale-110 transition-transform duration-500">
                   <Mail size={28} className="text-purple-600 dark:text-purple-400" />
                 </div>
-                <a href="mailto:abinkich132@gmail.com" className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors tracking-tight">
-                  abinkich132@gmail.com
+                <a href={`mailto:${profile.email}`} className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors tracking-tight">
+                  {profile.email}
                 </a>
               </div>
 
               <div className="flex flex-wrap justify-center lg:justify-start gap-4 w-full">
                 <a 
-                  href="https://github.com/hey-abin" 
+                  href={profile.githubUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="px-8 py-4 bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-zinc-100 dark:border-white/10 hover:bg-zinc-50 dark:hover:bg-zinc-700 hover:scale-105 transition-all font-black text-zinc-900 dark:text-white flex items-center gap-3 uppercase tracking-widest text-[10px]"
@@ -69,7 +69,7 @@ export default function Contact() {
                   <GithubIcon size={18} /> GitHub
                 </a>
                 <a 
-                  href="https://www.linkedin.com/in/abinkj2005" 
+                  href={profile.linkedinUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="px-8 py-4 bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-zinc-100 dark:border-white/10 hover:bg-zinc-50 dark:hover:bg-zinc-700 hover:scale-105 transition-all font-black text-zinc-900 dark:text-white flex items-center gap-3 uppercase tracking-widest text-[10px]"
@@ -89,10 +89,10 @@ export default function Contact() {
           >
             <div className="space-y-1 text-center sm:text-left">
               <h3 className="text-2xl font-black text-white tracking-tight uppercase">Send a Message</h3>
-              <p className="text-zinc-400 text-xs font-medium">I'll get back to you as soon as possible.</p>
+              <p className="text-zinc-400 text-xs font-medium">I&apos;ll get back to you as soon as possible.</p>
             </div>
             
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-4" action={`mailto:${profile.email}`}>
               <div className="space-y-3">
                 {[
                   { placeholder: "Your Name", type: "text" },

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
 import { motion } from "framer-motion"
 
@@ -8,20 +8,25 @@ export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme, setTheme } = useTheme()
 
-  // Avoid hydration mismatch
-  useEffect(() => setMounted(true), [])
-  if (!mounted) return null
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <div className="w-16 h-8 rounded-full bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
+    )
+  }
 
   const isDark = resolvedTheme === "dark"
 
-  const toggleTheme = (e) => {
+  const toggleTheme = () => {
     // Check if the View Transition API is supported
     if (!document.startViewTransition) {
       setTheme(isDark ? "light" : "dark")
       return
     }
 
-    // View Transition API legendary effect
     document.startViewTransition(() => {
       setTheme(isDark ? "light" : "dark")
     })

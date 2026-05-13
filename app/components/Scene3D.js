@@ -2,7 +2,7 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, MeshWobbleMaterial, Sphere, Torus, Octahedron, Dodecahedron, PerspectiveCamera } from "@react-three/drei";
-import { useMemo, useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useScroll, useTransform } from "framer-motion";
 import { useTheme } from "next-themes";
 import * as THREE from "three";
@@ -103,21 +103,22 @@ function Scene({ scrollProgress }) {
 }
 
 export default function Scene3D() {
+  const [mounted, setMounted] = useState(false);
   const { scrollYProgress } = useScroll();
-  const [eventSource, setEventSource] = useState(undefined);
   const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
 
   useEffect(() => {
-    setEventSource(document.body);
+    setMounted(true);
   }, []);
 
+  if (!mounted) return null;
+
+  const isDark = resolvedTheme === "dark";
+
   return (
-    <div className="fixed inset-0 z-5 pointer-events-none transition-opacity duration-1000 opacity-60 dark:opacity-80">
+    <div className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 opacity-60 dark:opacity-80">
       <Canvas 
         shadows 
-        eventSource={eventSource} 
-        eventPrefix="client"
         camera={{ position: [0, 0, 15], fov: 45 }}
         gl={{ antialias: true, alpha: true }}
       >

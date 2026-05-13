@@ -21,7 +21,7 @@ const LinkedinIcon = ({ size }) => (
   </svg>
 );
 
-export default function Navbar() {
+export default function Navbar({ profile }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -57,7 +57,7 @@ export default function Navbar() {
           animate={{ opacity: 1, x: 0 }}
           className="text-2xl font-black text-zinc-900 dark:text-white tracking-tighter"
         >
-          ABIN<span className="text-purple-600">KJ.</span>
+          {profile.name.replace(" ", "")}<span className="text-purple-600">.</span>
         </motion.div>
 
         {/* Desktop Menu */}
@@ -81,10 +81,10 @@ export default function Navbar() {
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="hidden sm:flex items-center gap-6">
             <ThemeToggle />
             <div className="flex gap-4">
-              <a href="https://github.com/hey-abin" target="_blank" rel="noopener noreferrer" className="p-2.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-white rounded-full transition-all">
+              <a href={profile.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-white rounded-full transition-all">
                 <GithubIcon size={20} />
               </a>
-              <a href="https://www.linkedin.com/in/abinkj2005" target="_blank" rel="noopener noreferrer" className="p-2.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-white rounded-full transition-all">
+              <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" className="p-2.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-white rounded-full transition-all">
                 <LinkedinIcon size={20} />
               </a>
             </div>
@@ -92,7 +92,7 @@ export default function Navbar() {
 
           {/* Hire Me CTA */}
           <a
-            href="/AbinkjResume.pdf"
+            href={profile.resumeUrl}
             target="_blank"
             className="hidden md:flex px-12 py-5 glass text-zinc-900 dark:text-white rounded-2xl font-black uppercase tracking-widest hover:bg-zinc-50/50 dark:hover:bg-white/5 hover:scale-105 active:scale-95 transition-all duration-300 border border-zinc-200 dark:border-white/10"
           >
@@ -137,16 +137,16 @@ export default function Navbar() {
               </div>
               <div className="flex flex-col gap-4 pt-4 border-t border-zinc-100 dark:border-white/10">
                 <a
-                  href="/AbinkjResume.pdf"
+                  href={profile.resumeUrl}
                   target="_blank"
                   className="w-full py-4 glass text-zinc-900 dark:text-white rounded-xl font-black uppercase tracking-widest flex items-center justify-center gap-2 border border-zinc-200 dark:border-white/10 shadow-sm active:scale-95 transition-all"
                 >
                   Download Resume
                 </a>
                 <div className="flex justify-center gap-10 pt-4">
-                  <a href="https://github.com/hey-abin" target="_blank" rel="noopener noreferrer" className="p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white"><GithubIcon size={28} /></a>
-                  <a href="https://www.linkedin.com/in/abinkj2005" target="_blank" rel="noopener noreferrer" className="p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white"><LinkedinIcon size={28} /></a>
-                  <a href="mailto:abinkich132@gmail.com" className="p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white"><Mail size={28} /></a>
+                  <a href={profile.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white"><GithubIcon size={28} /></a>
+                  <a href={profile.linkedinUrl} target="_blank" rel="noopener noreferrer" className="p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white"><LinkedinIcon size={28} /></a>
+                  <a href={`mailto:${profile.email}`} className="p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white"><Mail size={28} /></a>
                 </div>
               </div>
             </div>

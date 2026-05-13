@@ -1,10 +1,10 @@
 "use client"
 
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Code2, Cpu, Globe, Zap } from "lucide-react";
-import { useRef, useEffect, Suspense } from "react";
+import { useRef } from "react";
 
-function FloatingIcon({ icon: Icon, delay, className, color = "text-purple-600" }) {
+function FloatingIcon({ icon: Icon, delay, className }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
@@ -26,7 +26,7 @@ function FloatingIcon({ icon: Icon, delay, className, color = "text-purple-600" 
   );
 }
 
-export default function Hero() {
+export default function Hero({ profile }) {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -59,7 +59,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-purple-100/50 dark:border-white/10 text-purple-600 dark:text-purple-400 text-[10px] md:text-sm font-black uppercase tracking-[0.3em] shadow-sm bg-white/50 dark:bg-white/5"
         >
           <Zap size={14} className="animate-pulse" />
-          Engineering Digital Excellence
+          {profile.eyebrow}
         </motion.div>
 
         <div className="space-y-4 md:space-y-6">
@@ -69,7 +69,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl sm:text-7xl md:text-[12rem] font-black text-zinc-900 dark:text-white tracking-tighter leading-[1.1] md:leading-[0.8] whitespace-nowrap"
           >
-            ABIN <span className="text-gradient">KJ</span>
+            {profile.name.split(" ")[0]} <span className="text-gradient">{profile.name.split(" ").slice(1).join(" ")}</span>
           </motion.h1>
 
           <motion.p
@@ -78,7 +78,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="max-w-xl mx-auto text-lg md:text-2xl text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed px-4"
           >
-            Full Stack Developer specializing in architecting <span className="text-zinc-900 dark:text-white font-bold">high-performance</span> ecosystems with React, Next.js, and robust cloud infrastructures.
+            {profile.summary}
           </motion.p>
         </div>
 
@@ -95,7 +95,7 @@ export default function Hero() {
             Explore Projects
           </a>
           <a
-            href="/AbinkjResume.pdf"
+            href={profile.resumeUrl}
             target="_blank"
             className="w-full sm:w-auto px-10 py-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 text-zinc-900 dark:text-white rounded-[2rem] font-black uppercase tracking-widest text-xs hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 shadow-sm"
           >

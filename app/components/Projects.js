@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
-import { ExternalLink, Code2, Globe, Rocket, Github as GithubIcon } from "lucide-react";
+import { ExternalLink, Rocket } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -11,37 +11,6 @@ const Github = ({ size }) => (
     <path d="M9 18c-4.51 2-5-2-7-2" />
   </svg>
 );
-
-const projects = [
-  {
-    title: "Petlink Adoption",
-    subtitle: "EcoSphere SAAS Integration",
-    description: "A comprehensive pet adoption and listing platform designed to connect pets with loving homes seamlessly.",
-    tech: ["Next.js", "Firebase", "Tailwind CSS"],
-    image: "/petlink_actual.png",
-    color: "from-blue-600/80 to-cyan-600/80",
-    size: "md:col-span-2 md:row-span-2",
-    demo: "https://petlinkk.vercel.app/",
-  },
-  {
-    title: "Mycoco Pet Game",
-    description: "A high-end 3D pet care game built with Three.js for an immersive browser-based experience.",
-    tech: ["Three.js", "React Three Fiber"],
-    image: "/mycoco_actual.png",
-    color: "from-purple-600/80 to-indigo-600/80",
-    size: "md:col-span-1 md:row-span-1",
-    demo: "https://mycocopet.vercel.app/",
-  },
-  {
-    title: "Momos Delivery",
-    description: "A complete food delivery solution with real-time tracking and a modern interactive UI.",
-    tech: ["React", "MongoDB", "Node.js"],
-    image: "/momos_actual.png",
-    color: "from-rose-600/80 to-pink-600/80",
-    size: "md:col-span-1 md:row-span-1",
-    demo: "https://momos-theta.vercel.app/",
-  },
-];
 
 function ProjectCard({ project, index }) {
   const cardRef = useRef(null);
@@ -104,13 +73,35 @@ function ProjectCard({ project, index }) {
             style={{ y: imgY }}
             className="absolute inset-x-0 inset-y-[-20%] w-full h-[140%]"
           >
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              priority
-            />
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                priority
+              />
+            ) : project.demo ? (
+              <div className="w-full h-full relative bg-zinc-900 group-hover:bg-zinc-800 transition-colors">
+                <iframe
+                  src={project.demo}
+                  className="absolute inset-0 w-[200%] h-[200%] origin-top-left scale-[0.5] border-none opacity-40 group-hover:opacity-70 transition-opacity duration-700 pointer-events-none"
+                  title={`${project.title} Live Preview`}
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="px-4 py-2 bg-black/40 backdrop-blur-md rounded-full border border-white/10 opacity-100 group-hover:opacity-0 transition-opacity duration-500">
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/70 flex items-center gap-2">
+                      <ExternalLink size={12} /> Live Preview
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="w-full h-full bg-zinc-800 flex items-center justify-center">
+                <span className="text-zinc-500 text-xs font-bold uppercase tracking-widest">No Preview Available</span>
+              </div>
+            )}
           </motion.div>
           {/* Subtle Overlay Gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
@@ -144,12 +135,16 @@ function ProjectCard({ project, index }) {
             </div>
 
             <div className="flex gap-6 pt-4 border-t border-white/10">
-              <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs font-black text-white hover:text-purple-400 transition-colors uppercase tracking-[0.2em]">
-                Live View <ExternalLink size={14} />
-              </a>
-              <a href="#" className="flex items-center gap-2 text-xs font-black text-zinc-400 hover:text-white transition-colors uppercase tracking-[0.2em]">
-                Source <Github size={14} />
-              </a>
+              {project.demo && (
+                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs font-black text-white hover:text-purple-400 transition-colors uppercase tracking-[0.2em]">
+                  Live View <ExternalLink size={14} />
+                </a>
+              )}
+              {project.source && (
+                <a href={project.source} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs font-black text-zinc-400 hover:text-white transition-colors uppercase tracking-[0.2em]">
+                  Source <Github size={14} />
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -158,7 +153,7 @@ function ProjectCard({ project, index }) {
   );
 }
 
-export default function Projects() {
+export default function Projects({ projects }) {
   return (
     <section id="projects" className="py-20 px-6">
       <div className="max-w-7xl mx-auto space-y-12">

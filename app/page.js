@@ -4,18 +4,23 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
+import { getProfile, getProjects } from "@/lib/portfolio";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const [profile, projects] = await Promise.all([getProfile(), getProjects()]);
+
   return (
     <main className="relative min-h-screen bg-transparent">
-      <Navbar />
+      <Navbar profile={profile} />
       
       <div className="relative z-10">
-        <Hero />
-        <About />
-        <Projects />
+        <Hero profile={profile} />
+        <About profile={profile} />
+        <Projects projects={projects} />
         <Skills />
-        <Contact />
+        <Contact profile={profile} />
       </div>
 
       {/* Grid Overlay for subtle texture */}

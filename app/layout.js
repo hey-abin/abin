@@ -12,6 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://abinkj.vercel.app"),
   title: "Abin KJ | Full Stack Developer",
   description: "Interactive 3D portfolio of Abin KJ, a Full Stack Developer specializing in React, Next.js, and high-performance digital ecosystems.",
   openGraph: {
