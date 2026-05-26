@@ -49,8 +49,9 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-white dark:bg-zinc-950 transition-colors duration-500 overflow-x-hidden">
+      <body className="min-h-full flex flex-col bg-transparent overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
+          <div className="fixed inset-0 z-[-2] bg-white dark:bg-zinc-950 transition-colors duration-500" />
           <Scene3D />
           {children}
         </ThemeProvider>

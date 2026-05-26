@@ -116,7 +116,7 @@ export default function Scene3D() {
   const isDark = resolvedTheme === "dark";
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 opacity-60 dark:opacity-80">
+    <div className="fixed inset-0 z-[-1] pointer-events-none transition-opacity duration-1000 opacity-60 dark:opacity-80">
       <Canvas 
         shadows 
         camera={{ position: [0, 0, 15], fov: 45 }}

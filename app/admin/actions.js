@@ -22,55 +22,73 @@ export async function logoutAdmin() {
 }
 
 export async function updateProfile(formData) {
-  await assertAdmin();
+  try {
+    await assertAdmin();
 
-  await upsertProfile({
-    name: text(formData, "name"),
-    role: text(formData, "role"),
-    eyebrow: text(formData, "eyebrow"),
-    summary: text(formData, "summary"),
-    aboutTitle: text(formData, "aboutTitle"),
-    aboutIntro: text(formData, "aboutIntro"),
-    aboutBody: text(formData, "aboutBody"),
-    photoUrl: text(formData, "photoUrl"),
-    resumeUrl: text(formData, "resumeUrl"),
-    email: text(formData, "email"),
-    githubUrl: text(formData, "githubUrl"),
-    linkedinUrl: text(formData, "linkedinUrl"),
-    projectsCompleted: text(formData, "projectsCompleted"),
-    yearsExperience: text(formData, "yearsExperience"),
-  });
+    await upsertProfile({
+      name: text(formData, "name"),
+      role: text(formData, "role"),
+      eyebrow: text(formData, "eyebrow"),
+      summary: text(formData, "summary"),
+      aboutTitle: text(formData, "aboutTitle"),
+      aboutIntro: text(formData, "aboutIntro"),
+      aboutBody: text(formData, "aboutBody"),
+      photoUrl: text(formData, "photoUrl"),
+      resumeUrl: text(formData, "resumeUrl"),
+      email: text(formData, "email"),
+      githubUrl: text(formData, "githubUrl"),
+      linkedinUrl: text(formData, "linkedinUrl"),
+      projectsCompleted: text(formData, "projectsCompleted"),
+      yearsExperience: text(formData, "yearsExperience"),
+    });
 
-  revalidatePath("/");
-  revalidatePath("/admin");
-  redirect("/admin?saved=profile");
+    revalidatePath("/");
+    revalidatePath("/admin");
+    redirect("/admin?saved=profile");
+  } catch (error) {
+    if (error.digest?.startsWith("NEXT_REDIRECT")) throw error;
+    console.error("Error updating profile:", error);
+    redirect(`/admin?error=${encodeURIComponent(error.message)}`);
+  }
 }
 
 export async function addProject(formData) {
-  await assertAdmin();
+  try {
+    await assertAdmin();
 
-  await createProject({
-    title: text(formData, "title"),
-    description: text(formData, "description"),
-    tech: list(formData, "tech"),
-    image: text(formData, "image"),
-    demo: text(formData, "demo"),
-    source: text(formData, "source"),
-    color: text(formData, "color") || "from-purple-600/80 to-indigo-600/80",
-    size: text(formData, "size") || "md:col-span-1 md:row-span-1",
-    sortOrder: Number(text(formData, "sortOrder")) || 99,
-  });
+    await createProject({
+      title: text(formData, "title"),
+      description: text(formData, "description"),
+      tech: list(formData, "tech"),
+      image: text(formData, "image"),
+      demo: text(formData, "demo"),
+      source: text(formData, "source"),
+      color: text(formData, "color") || "from-purple-600/80 to-indigo-600/80",
+      size: text(formData, "size") || "md:col-span-1 md:row-span-1",
+      sortOrder: Number(text(formData, "sortOrder")) || 99,
+    });
 
-  revalidatePath("/");
-  revalidatePath("/admin");
-  redirect("/admin?saved=project");
+    revalidatePath("/");
+    revalidatePath("/admin");
+    redirect("/admin?saved=project");
+  } catch (error) {
+    if (error.digest?.startsWith("NEXT_REDIRECT")) throw error;
+    console.error("Error adding project:", error);
+    redirect(`/admin?error=${encodeURIComponent(error.message)}`);
+  }
 }
 
 export async function removeProject(formData) {
-  await assertAdmin();
+  try {
+    await assertAdmin();
 
-  await deleteProject(text(formData, "id"));
-  revalidatePath("/");
-  revalidatePath("/admin");
-  redirect("/admin?saved=deleted");
+    await deleteProject(text(formData, "id"));
+    revalidatePath("/");
+    revalidatePath("/admin");
+    redirect("/admin?saved=deleted");
+  } catch (error) {
+    if (error.digest?.startsWith("NEXT_REDIRECT")) throw error;
+    console.error("Error removing project:", error);
+    redirect(`/admin?error=${encodeURIComponent(error.message)}`);
+  }
 }

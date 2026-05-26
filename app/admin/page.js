@@ -68,13 +68,18 @@ export default async function AdminPage({ searchParams }) {
   ]);
 
   return (
-    <main className="min-h-screen bg-zinc-100 px-4 py-8 text-zinc-950 md:px-8">
+    <main className="relative z-10 min-h-screen bg-zinc-100 px-4 py-8 text-zinc-950 md:px-8">
       <div className="mx-auto grid max-w-6xl gap-8">
         <header className="flex flex-col gap-4 rounded-3xl bg-zinc-950 p-6 text-white shadow-xl md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.35em] text-purple-300">Portfolio Admin</p>
             <h1 className="mt-2 text-3xl font-black">Manage Abin KJ Portfolio</h1>
             {params?.saved && <p className="mt-2 text-sm font-bold text-emerald-300">Saved: {params.saved}</p>}
+            {params?.error && (
+              <p className="mt-2 text-sm font-bold text-red-400 bg-red-500/10 border border-red-500/20 px-3 py-1.5 rounded-lg">
+                Error: {params.error}
+              </p>
+            )}
           </div>
           <form action={logoutAdmin}>
             <button type="submit" className="rounded-xl border border-white/10 px-5 py-3 text-xs font-black uppercase tracking-widest text-white transition hover:bg-white/10">
