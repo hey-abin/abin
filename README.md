@@ -7,7 +7,7 @@
 <p align="center">
   <a href="https://petlinkk.vercel.app/"><strong>Live Demo</strong></a> ·
   <a href="mailto:abinkich132@gmail.com"><strong>Contact Me</strong></a> ·
-  <a href="public/AbinkjResume.pdf"><strong>Download Resume</strong></a>
+  <a href="public/dev-abin.pdf"><strong>Download Resume</strong></a>
 </p>
 
 ---
